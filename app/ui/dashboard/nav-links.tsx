@@ -32,7 +32,7 @@ export default function NavLinks() {
           //   <LinkIcon className="w-6" />
           //   <p className="hidden md:block">{link.name}</p>
           // </Link>
-          <LinkLoc name={link.name} href={link.href} linkIcon={<LinkIcon className="w-6" />} />
+          <LinkLoc key={link.name} name={link.name} href={link.href} linkIcon={<LinkIcon className="w-6" />} />
         );
       })}
     </>
