@@ -9,6 +9,10 @@ const users = [
   },
 ];
 
+// We use UUIDs instead of incrementing keys (e.g., 1, 2, 3, etc.). This makes the URL longer; however, UUIDs eliminate the risk of ID collision, are globally unique, and reduce the risk of enumeration attacks - making them ideal for large databases.
+
+// However, if you prefer cleaner URLs, you might prefer to use auto-incrementing keys.
+
 const customers = [
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
