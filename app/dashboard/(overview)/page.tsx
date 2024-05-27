@@ -5,15 +5,24 @@ import { lusitana } from '@/app/ui/fonts';
 import { fetchLatestInvoices, fetchCardData } from '../../lib/data';
 import { Suspense } from 'react';
 import { RevenueChartSkeleton } from '@/app/ui/skeletons';
+import { auth } from '@/auth';
 
 const Dashboard = async () => {
     const latestInvoices = await fetchLatestInvoices();
     const { totalPaidInvoices, totalPendingInvoices, numberOfCustomers, numberOfInvoices } = await fetchCardData();
+
+    const session = await auth();
+
     return (
         <main>
-            <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-                Dashboard
-            </h1>
+            <div className="flex justify-between items-center">
+
+                <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                    Dashboard
+                </h1>
+                <h1 className="text-xl md:text-2xl mb-4">{session?.user?.email}</h1>
+
+            </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <Card title="Collected" value={totalPaidInvoices} type="collected" />
                 <Card title="Pending" value={totalPendingInvoices} type="pending" />
